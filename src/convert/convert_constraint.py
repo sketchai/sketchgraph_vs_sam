@@ -21,73 +21,69 @@ GEOMETRIC_CONSTRAINTS = {
 
 class SGtoExchangeConstraint:
 
-    def convert(op):
+    def convert(op, new_ref):
         
         # Check for geometric constraints
         if op.label in GEOMETRIC_CONSTRAINTS.keys():
-            return GEOMETRIC_CONSTRAINTS[op.label](references = op.references)
+            return GEOMETRIC_CONSTRAINTS[op.label](references = new_ref)
 
         if op.label == ConstraintType.Distance:
-            return SGtoExchangeConstraint.convert_distance(op)
+            return SGtoExchangeConstraint.convert_distance(op, new_ref)
 
         if op.label == ConstraintType.Length:
-            return SGtoExchangeConstraint.convert_length(op)
+            return SGtoExchangeConstraint.convert_length(op, new_ref)
 
         if op.label == ConstraintType.Midpoint:
-            return SGtoExchangeConstraint.convert_midpoint(op)
+            return SGtoExchangeConstraint.convert_midpoint(op, new_ref)
 
         if op.label == ConstraintType.Diameter:
-            return SGtoExchangeConstraint.convert_diameter(op)
+            return SGtoExchangeConstraint.convert_diameter(op, new_ref)
 
         if op.label == ConstraintType.Radius:
-            return SGtoExchangeConstraint.convert_radius(op)
+            return SGtoExchangeConstraint.convert_radius(op, new_ref)
 
         if op.label == ConstraintType.Concentric:
-            return SGtoExchangeConstraint.convert_concentric(op)
+            return SGtoExchangeConstraint.convert_concentric(op, new_ref)
 
         if op.label == ConstraintType.Angle:
-            return SGtoExchangeConstraint.convert_angle(op)
+            return SGtoExchangeConstraint.convert_angle(op, new_ref)
         
-        if op.label == ConstraintType.Subnode :
-            return 'is_subnode'
 
         return None
 
-    def convert_distance(op):
+    def convert_distance(op, new_ref):
         d = op.parameters.get('length')
-        return Distance(references= op.references, distance_min= d)
+        return Distance(references= new_ref, distance_min= d)
 
-    def convert_length(op):
+    def convert_length(op,new_ref):
         direction = op.parameters.get('direction')
         if direction == DirectionValue.HORIZONTAL:
-            return HorizontalLength(references= op.references, length= op.parameters.get('length'))
+            return HorizontalLength(references= new_ref, length= op.parameters.get('length'))
         else :
-            return Length(references= op.references, length= op.parameters.get('length'))
+            return Length(references= new_ref, length= op.parameters.get('length'))
 
-    def convert_midpoint(op):
-        references = op.references 
-        opt_1 = isinstance(references[0], Point) and isinstance(references[1], Line)
-        opt_2 = isinstance(references[0], Line) and isinstance(references[1], Point)
+    def convert_midpoint(op, new_ref):
+        opt_1 = isinstance(new_ref[0], Point) and isinstance(new_ref[1], Line)
+        opt_2 = isinstance(new_ref[0], Line) and isinstance(new_ref[1], Point)
         if opt_1 or opt_2 :
-            return Midpoint(references= op.references)
+            return Midpoint(references= new_ref)
         else :
             return None
 
-    def convert_diameter(op):
-        return Radius(references=op.references, radius= op.parameters.get('length')/2.)
+    def convert_diameter(op, new_ref):
+        return Radius(references=new_ref, radius= op.parameters.get('length')/2.)
 
     def convert_radius(op):
         return Radius(references=op.references, radius= op.parameters.get('length'))
 
-    def convert_concentric(op):
-        references = op.references 
-        if isinstance(references[0], Circle) and isinstance(references[1], Circle):
-            return Coincident(references= op.references)
+    def convert_concentric(op, new_ref):
+        if isinstance(new_ref[0], Circle) and isinstance(new_ref[1], Circle):
+            return Coincident(references= new_ref)
         else :
             return None
 
-    def convert_angle(op):
+    def convert_angle(op, new_ref):
         if op.parameters.get('clockwise') :
-            return Angle(references=op.references, angle =  op.parameters.get('angle')) 
+            return Angle(references=new_ref, angle =  op.parameters.get('angle')) 
         else :
-            return Angle(references=op.references, angle = - op.parameters.get('angle')) 
+            return Angle(references=new_ref, angle = - op.parameters.get('angle')) 
