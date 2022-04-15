@@ -63,6 +63,8 @@ class SGtoExchangeConstraint:
     def convert_midpoint(op, new_ref):
         opt_1 = isinstance(new_ref[0], Point) and isinstance(new_ref[1], Line)
         opt_2 = isinstance(new_ref[0], Line) and isinstance(new_ref[1], Point)
+
+       
         if opt_1 or opt_2 :
             return Midpoint(references= new_ref)
         else :

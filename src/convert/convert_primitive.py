@@ -1,7 +1,7 @@
 from sketch_data.catalog_primitive import Arc, Line, Circle, Point
 from sketchgraphs.data.sketch import EntityType
 
-
+import math
 
 class SGtoExchangePrimitive:
 

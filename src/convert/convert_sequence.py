@@ -81,6 +81,7 @@ def collect_edge(seq, d_nodes : Dict = {}):
 def convert_sequence(seq:object):
     sketch = Sketch()
 
+    
     d_nodes = collect_node(seq)
     d_edges = collect_edge(seq, d_nodes)
     nb_nodes = len(d_nodes.get('normal'))
