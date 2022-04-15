@@ -83,6 +83,8 @@ def convert_sequence(seq:object):
 
     d_nodes = collect_node(seq)
     d_edges = collect_edge(seq, d_nodes)
+    nb_nodes = len(d_nodes.get('normal'))
+    nb_edges = len(d_edges)
 
     d = d_nodes.get('normal')
     d.update(d_edges)
@@ -90,5 +92,6 @@ def convert_sequence(seq:object):
     for i,elt in d.items():
         sketch.add(elt)
 
-    return sketch
+
+    return sketch, nb_edges, nb_nodes
 
