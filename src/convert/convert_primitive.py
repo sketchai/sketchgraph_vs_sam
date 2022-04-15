@@ -1,6 +1,4 @@
-import math
-
-from src.sketch_data.sketch_data.catalog_primitive import Arc, Line, Circle, Point
+from sketch_data.catalog_primitive import Arc, Line, Circle, Point
 from sketchgraphs.data.sketch import EntityType
 
 
@@ -51,7 +49,9 @@ class SGtoExchangePrimitive:
 
         start_angle = angle + startParam
         end_angle = angle + endParam
-        return Arc(status_construction=parms.get('isConstruction'), 
+        arc = Arc(status_construction=parms.get('isConstruction'), 
                         center = [parms.get('xCenter'), parms.get('yCenter')],
                         radius= parms.get('radius'),
                         angles= [start_angle, end_angle])
+        arc.add_points_startend()
+        return arc

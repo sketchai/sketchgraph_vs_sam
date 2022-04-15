@@ -17,3 +17,9 @@ tests/asset/out
 nosetests.xml
 coverage.xml
 
+# Install package
+src/filtering-pipeline
+src/sketch_data
+src/sketchgraphs
+
+#

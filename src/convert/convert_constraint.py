@@ -1,7 +1,5 @@
-import math
-
-from src.sketch_data.sketch_data.catalog_constraint import *
-from src.sketch_data.sketch_data.catalog_primitive import Arc, Line, Circle, Point
+from sketch_data.catalog_constraint import *
+from sketch_data.catalog_primitive import Arc, Line, Circle, Point
 from sketchgraphs.data.sketch import ConstraintType, DirectionValue
 from sketchgraphs.data.sketch import EntityType
 
@@ -73,8 +71,8 @@ class SGtoExchangeConstraint:
     def convert_diameter(op, new_ref):
         return Radius(references=new_ref, radius= op.parameters.get('length')/2.)
 
-    def convert_radius(op):
-        return Radius(references=op.references, radius= op.parameters.get('length'))
+    def convert_radius(op, new_ref):
+        return Radius(references=new_ref, radius= op.parameters.get('length'))
 
     def convert_concentric(op, new_ref):
         if isinstance(new_ref[0], Circle) and isinstance(new_ref[1], Circle):
