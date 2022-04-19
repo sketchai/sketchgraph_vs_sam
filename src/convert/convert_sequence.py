@@ -70,8 +70,7 @@ def collect_edge(seq, d_nodes : Dict = {}):
                         primitive_index = d_nodes['order'][index_ref]
                         ref = d_nodes['normal'][primitive_index]
                     new_ref.append(ref)
-                logger.info(f'ref= {new_ref}')
-
+                
                 d_edges[i] = SGtoExchangeConstraint.convert(op = op, new_ref = new_ref)
 
     
