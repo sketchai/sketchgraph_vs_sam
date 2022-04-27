@@ -71,7 +71,9 @@ def collect_edge(seq, d_nodes : Dict = {}):
                         ref = d_nodes['normal'][primitive_index]
                     new_ref.append(ref)
                 
-                d_edges[i] = SGtoExchangeConstraint.convert(op = op, new_ref = new_ref)
+                converted_constraint = SGtoExchangeConstraint.convert(op = op, new_ref = new_ref)
+                if converted_constraint is not None:
+                    d_edges[i] = converted_constraint
 
     
     return d_edges
