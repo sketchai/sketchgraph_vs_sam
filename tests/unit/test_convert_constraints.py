@@ -1,11 +1,11 @@
 import sys
-from turtle import circle
+
 sys.path.append('src/sketchgraphs/')
-sys.path.append('src/sketch_data/')
+sys.path.append('src/sam/')
 
 from sketchgraphs.data.sequence import EdgeOp
 from sketchgraphs.data.sketch import DirectionValue
-from sketch_data.catalog_primitive import Point, Line, Circle
+from sam.catalog_primitive import Point, Line, Circle
 
 from src.convert.convert_constraint import SGtoExchangeConstraint
 
@@ -77,14 +77,14 @@ class TestConvert(unittest.TestCase):
         sg_format = EdgeOp(label=14, references= [0], parameters = {'length' : 0.4})
         logger.info(f"sg_point: {sg_format}")
         ex_format = SGtoExchangeConstraint.convert(op = sg_format, new_ref= [circle])
-        self.assertEqual('RADIUS: ref= Circle: center=Point P(0.0, 5.0), radius=  1, radius_constraint = 0.4', str(ex_format))
+        self.assertEqual('RADIUS: ref= Circle: center=Point P(0.0, 5.0), radius=  1, radius = 0.4', str(ex_format))
 
     def test_convert_diameter(self):
         circle = Circle(center=[0., 5.], radius=1)
         sg_format = EdgeOp(label=12, references= [0], parameters = {'length' : 0.4})
         logger.info(f"sg_point: {sg_format}")
         ex_format = SGtoExchangeConstraint.convert(op = sg_format, new_ref= [circle])
-        self.assertEqual('RADIUS: ref= Circle: center=Point P(0.0, 5.0), radius=  1, radius_constraint = 0.2', str(ex_format))
+        self.assertEqual('RADIUS: ref= Circle: center=Point P(0.0, 5.0), radius=  1, radius = 0.2', str(ex_format))
 
     def test_convert_concentric(self):
 

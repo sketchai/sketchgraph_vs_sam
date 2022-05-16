@@ -1,6 +1,6 @@
 import sys
 sys.path.append('src/sketchgraphs/')
-sys.path.append('src/sketch_data/')
+sys.path.append('src/sam/')
 
 from sketchgraphs.data.sequence import NodeOp
 from src.convert.convert_primitive import SGtoExchangePrimitive

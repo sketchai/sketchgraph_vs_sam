@@ -1,13 +1,13 @@
 import sys
 
 sys.path.append('src/sketchgraphs/')
-sys.path.append('src/sketch_data/')
+sys.path.append('src/sam/')
 sys.path.append('src/filtering-pipeline/')
 
 from src.convert.convert_sequence import convert_sequence
 from tests.asset.mock.source_fromflatarray import SourceFromFlatArray
-from sketch_data.catalog_primitive import Arc, Line, Circle, Point
-from sketch_data.catalog_constraint import *
+from sam.catalog_primitive import Arc, Line, Circle, Point
+from sam.catalog_constraint import *
 
 import logging
 import unittest

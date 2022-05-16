@@ -1,5 +1,5 @@
-from sketch_data.catalog_constraint import *
-from sketch_data.catalog_primitive import Arc, Line, Circle, Point
+from sam.catalog_constraint import *
+from sam.catalog_primitive import Arc, Line, Circle, Point
 from sketchgraphs.data.sketch import ConstraintType, DirectionValue
 from sketchgraphs.data.sketch import EntityType
 

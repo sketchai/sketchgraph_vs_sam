@@ -19,7 +19,7 @@ coverage.xml
 
 # Install package
 src/filtering-pipeline
-src/sketch_data
+src/sam
 src/sketchgraphs
 
 #
