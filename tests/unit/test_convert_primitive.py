@@ -3,7 +3,7 @@ sys.path.append('src/sketchgraphs/')
 sys.path.append('src/sam/')
 
 from sketchgraphs.data.sequence import NodeOp
-from src.convert.convert_primitive import SGtoExchangePrimitive
+from sketchgraphs_vs_sam.convert.convert_primitive import SGtoExchangePrimitive
 import logging
 import unittest
 
