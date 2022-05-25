@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ConvertSGtoExchangeFormat"
+name = "sketchgraphs_vs_sam"
 version = "0.1.0"
 description = ""
 authors = ["EDF - F.Robin"]

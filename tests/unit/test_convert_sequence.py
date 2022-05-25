@@ -4,7 +4,7 @@ sys.path.append('src/sketchgraphs/')
 sys.path.append('src/sam/')
 sys.path.append('src/filtering-pipeline/')
 
-from src.convert.convert_sequence import convert_sequence
+from sketchgraphs_vs_sam.convert.convert_sequence import convert_sequence
 from tests.asset.mock.source_fromflatarray import SourceFromFlatArray
 from sam.catalog_primitive import Arc, Line, Circle, Point
 from sam.catalog_constraint import *

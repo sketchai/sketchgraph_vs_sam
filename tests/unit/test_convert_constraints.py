@@ -7,7 +7,7 @@ from sketchgraphs.data.sequence import EdgeOp
 from sketchgraphs.data.sketch import DirectionValue
 from sam.catalog_primitive import Point, Line, Circle
 
-from src.convert.convert_constraint import SGtoExchangeConstraint
+from sketchgraphs_vs_sam.convert.convert_constraint import SGtoExchangeConstraint
 
 import logging
 import unittest
