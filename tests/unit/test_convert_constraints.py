@@ -55,7 +55,7 @@ class TestConvert(unittest.TestCase):
         sg_format = EdgeOp(label=8, references= [1], parameters = {'length' : 0.4, 'direction' : DirectionValue.HORIZONTAL})
         logger.info(f"sg_point: {sg_format}")
         ex_format = SGtoExchangeConstraint.convert(op = sg_format, new_ref=[line])
-        self.assertEqual('HORIZONTAL_LENGTH: ref= Line p1=Point P(0.0, 1.0), p2=Point P(0.4, 10.0), length = 0.4', str(ex_format))
+        self.assertEqual('HORIZONTAL_DISTANCE: ref_1: Line p1=Point P(0.0, 1.0), p2=Point P(0.4, 10.0), distance_min = 0.4', str(ex_format))
 
 
     def test_convert_midpoint(self):

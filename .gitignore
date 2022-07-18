@@ -18,8 +18,8 @@ nosetests.xml
 coverage.xml
 
 # Install package
-src/filtering-pipeline
-src/sam
-src/sketchgraphs
+filtering_pipeline
+sam
+sketchgraphs
 
 #

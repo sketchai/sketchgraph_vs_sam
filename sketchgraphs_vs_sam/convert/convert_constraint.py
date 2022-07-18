@@ -1,3 +1,4 @@
+from turtle import distance
 from sam.catalog_constraint import *
 from sam.catalog_primitive import Arc, Line, Circle, Point
 from sketchgraphs.data.sketch import ConstraintType, DirectionValue
@@ -56,7 +57,7 @@ class SGtoExchangeConstraint:
     def convert_length(op,new_ref):
         direction = op.parameters.get('direction')
         if direction == DirectionValue.HORIZONTAL:
-            return HorizontalLength(references= new_ref, length= op.parameters.get('length'))
+            return HorizontalDistance(references= new_ref, distance_min= op.parameters.get('length'))
         else :
             return Length(references= new_ref, length= op.parameters.get('length'))
 
